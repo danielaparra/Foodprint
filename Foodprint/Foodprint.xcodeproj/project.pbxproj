@@ -14,9 +14,15 @@
 		7BF06728218793D50072076D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF06726218793D50072076D /* LaunchScreen.storyboard */; };
 		7BF067322187FEAC0072076D /* RecipeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067312187FEAC0072076D /* RecipeResult.swift */; };
 		7BF067342187FEB20072076D /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067332187FEB20072076D /* Recipe.swift */; };
-		7BF06736218804450072076D /* FoodEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF06735218804450072076D /* FoodEntry.swift */; };
-		7BF06738218807200072076D /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF06737218807200072076D /* Food.swift */; };
+		7BF06736218804450072076D /* FoodEntry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF06735218804450072076D /* FoodEntry+Convenience.swift */; };
+		7BF06738218807200072076D /* FoodRep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF06737218807200072076D /* FoodRep.swift */; };
 		7BF0673D2188A2B60072076D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0673C2188A2B60072076D /* CoreDataStack.swift */; };
+		7BF067412188ADFD0072076D /* MyFoodDiaryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067402188ADFD0072076D /* MyFoodDiaryTableViewController.swift */; };
+		7BF067442188AE2B0072076D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067432188AE2A0072076D /* HomeViewController.swift */; };
+		7BF067462188B1CB0072076D /* MealSnackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067452188B1CB0072076D /* MealSnackDetailViewController.swift */; };
+		7BF067482188D59B0072076D /* FoodsAddedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067472188D59B0072076D /* FoodsAddedTableViewController.swift */; };
+		7BF0674A2188E1100072076D /* FoodResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067492188E1100072076D /* FoodResultTableViewCell.swift */; };
+		7BF4F6922188FF1A006ABA3B /* Food+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +35,15 @@
 		7BF06729218793D50072076D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7BF067312187FEAC0072076D /* RecipeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeResult.swift; sourceTree = "<group>"; };
 		7BF067332187FEB20072076D /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		7BF06735218804450072076D /* FoodEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntry.swift; sourceTree = "<group>"; };
-		7BF06737218807200072076D /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		7BF06735218804450072076D /* FoodEntry+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodEntry+Convenience.swift"; sourceTree = "<group>"; };
+		7BF06737218807200072076D /* FoodRep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRep.swift; sourceTree = "<group>"; };
 		7BF0673C2188A2B60072076D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7BF067402188ADFD0072076D /* MyFoodDiaryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFoodDiaryTableViewController.swift; sourceTree = "<group>"; };
+		7BF067432188AE2A0072076D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7BF067452188B1CB0072076D /* MealSnackDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealSnackDetailViewController.swift; sourceTree = "<group>"; };
+		7BF067472188D59B0072076D /* FoodsAddedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodsAddedTableViewController.swift; path = "Foodprint/View Controllers/FoodsAddedTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		7BF067492188E1100072076D /* FoodResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodResultTableViewCell.swift; sourceTree = "<group>"; };
+		7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 		7BF06719218793D30072076D /* Foodprint */ = {
 			isa = PBXGroup;
 			children = (
+				7BF067422188AE040072076D /* View Controllers */,
 				7BF0673A2188A1C60072076D /* Storyboard */,
 				7BF06739218807CD0072076D /* Model */,
 				7BF0673B2188A2000072076D /* Resources */,
@@ -74,8 +87,9 @@
 		7BF06739218807CD0072076D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7BF06735218804450072076D /* FoodEntry.swift */,
-				7BF06737218807200072076D /* Food.swift */,
+				7BF06735218804450072076D /* FoodEntry+Convenience.swift */,
+				7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */,
+				7BF06737218807200072076D /* FoodRep.swift */,
 				7BF067332187FEB20072076D /* Recipe.swift */,
 				7BF067312187FEAC0072076D /* RecipeResult.swift */,
 				7BF06721218793D30072076D /* Foodprint.xcdatamodeld */,
@@ -101,6 +115,18 @@
 				7BF0673C2188A2B60072076D /* CoreDataStack.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		7BF067422188AE040072076D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7BF067432188AE2A0072076D /* HomeViewController.swift */,
+				7BF067402188ADFD0072076D /* MyFoodDiaryTableViewController.swift */,
+				7BF067452188B1CB0072076D /* MealSnackDetailViewController.swift */,
+				7BF067472188D59B0072076D /* FoodsAddedTableViewController.swift */,
+				7BF067492188E1100072076D /* FoodResultTableViewCell.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,10 +202,16 @@
 			files = (
 				7BF0673D2188A2B60072076D /* CoreDataStack.swift in Sources */,
 				7BF067322187FEAC0072076D /* RecipeResult.swift in Sources */,
-				7BF06736218804450072076D /* FoodEntry.swift in Sources */,
+				7BF4F6922188FF1A006ABA3B /* Food+Convenience.swift in Sources */,
+				7BF067412188ADFD0072076D /* MyFoodDiaryTableViewController.swift in Sources */,
+				7BF06736218804450072076D /* FoodEntry+Convenience.swift in Sources */,
 				7BF067342187FEB20072076D /* Recipe.swift in Sources */,
-				7BF06738218807200072076D /* Food.swift in Sources */,
+				7BF0674A2188E1100072076D /* FoodResultTableViewCell.swift in Sources */,
+				7BF067442188AE2B0072076D /* HomeViewController.swift in Sources */,
+				7BF06738218807200072076D /* FoodRep.swift in Sources */,
 				7BF06723218793D30072076D /* Foodprint.xcdatamodeld in Sources */,
+				7BF067462188B1CB0072076D /* MealSnackDetailViewController.swift in Sources */,
+				7BF067482188D59B0072076D /* FoodsAddedTableViewController.swift in Sources */,
 				7BF0671B218793D30072076D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
