@@ -114,48 +114,83 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="86X-MU-uOX">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-Tb-pzZ">
-                                    <rect key="frame" x="8" y="0.0" width="367" height="71"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-gf-3d1">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Meal or snack?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-V0-1NI">
-                                            <rect key="frame" x="0.0" y="25.5" width="115" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="745" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-b0-BbL">
-                                            <rect key="frame" x="123" y="0.0" width="244" height="71"/>
-                                        </pickerView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-Tb-pzZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="   Meal or snack?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-V0-1NI">
+                                                    <rect key="frame" x="0.0" y="39.5" width="128" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="745" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-b0-BbL">
+                                                    <rect key="frame" x="136" y="0.0" width="239" height="99"/>
+                                                </pickerView>
+                                            </subviews>
+                                        </stackView>
+                                        <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="86N-NB-unv">
+                                            <rect key="frame" x="0.0" y="99" width="375" height="56"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
                                     </subviews>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="RMW-Tb-pzZ" firstAttribute="top" secondItem="86X-MU-uOX" secondAttribute="top" id="BhL-jl-Oud"/>
-                                <constraint firstItem="RMW-Tb-pzZ" firstAttribute="leading" secondItem="86X-MU-uOX" secondAttribute="leading" constant="8" id="SjC-rK-p6M"/>
-                                <constraint firstAttribute="bottom" secondItem="RMW-Tb-pzZ" secondAttribute="bottom" id="WDm-UB-GaD"/>
-                                <constraint firstAttribute="trailing" secondItem="RMW-Tb-pzZ" secondAttribute="trailing" id="dBc-oS-hRx"/>
+                                <constraint firstItem="FCs-gf-3d1" firstAttribute="leading" secondItem="86X-MU-uOX" secondAttribute="leading" id="6oh-uQ-H06"/>
+                                <constraint firstAttribute="trailing" secondItem="FCs-gf-3d1" secondAttribute="trailing" id="Jla-Km-DKF"/>
+                                <constraint firstAttribute="bottom" secondItem="FCs-gf-3d1" secondAttribute="bottom" id="Llu-aZ-ksK"/>
+                                <constraint firstItem="FCs-gf-3d1" firstAttribute="top" secondItem="86X-MU-uOX" secondAttribute="top" id="sDv-r8-4qj"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="1me-jI-x5H" style="IBUITableViewCellStyleDefault" id="wHb-y3-ZsC">
-                                <rect key="frame" x="0.0" y="99" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wHb-y3-ZsC">
+                                <rect key="frame" x="0.0" y="183" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wHb-y3-ZsC" id="gCY-TM-Qc7">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1me-jI-x5H">
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AEk-m9-1ic">
                                             <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Food you searched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-Zx-2JX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="178.5" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-N2-Aw2">
+                                                    <rect key="frame" x="186.5" y="0.0" width="83.5" height="43.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="255" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="zwh-hg-LZK">
+                                                    <rect key="frame" x="278" y="0.0" width="27" height="43.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-2f-dE5">
+                                                    <rect key="frame" x="313" y="0.0" width="30" height="43.5"/>
+                                                    <state key="normal" title="Add"/>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AEk-m9-1ic" firstAttribute="leading" secondItem="gCY-TM-Qc7" secondAttribute="leading" constant="16" id="6Zc-h6-wdU"/>
+                                        <constraint firstAttribute="bottom" secondItem="AEk-m9-1ic" secondAttribute="bottom" id="Azb-F7-1NC"/>
+                                        <constraint firstItem="AEk-m9-1ic" firstAttribute="top" secondItem="gCY-TM-Qc7" secondAttribute="top" id="HyP-gz-K6M"/>
+                                        <constraint firstAttribute="trailing" secondItem="AEk-m9-1ic" secondAttribute="trailing" constant="16" id="Ny4-n9-3Yi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
