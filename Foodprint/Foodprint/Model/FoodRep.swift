@@ -20,6 +20,14 @@ enum Category: String, Codable {
 }
 
 struct FoodRep: Codable {
+    
+    init() {
+        self.food = "TestFood"
+        self.category = Category.dairy
+        self.caloriesPerServing = "5"
+        self.gramsCo2EPerServing = "200"
+    }
+    
     let gramsCo2EPerServing: String
     let caloriesPerServing: String
     let category: Category

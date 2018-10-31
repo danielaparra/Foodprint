@@ -8,25 +8,31 @@
 
 import UIKit
 
+protocol FoodResultCellDelegate: class {
+    func addFoodResult(from cell: FoodResultTableViewCell)
+}
+
 class FoodResultTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    private func updateViews() {
+        guard let foodResult = foodResult else { return }
+        
+        foodResultLabel.text = foodResult.food
+        servingsTextField.text = "1"
     }
     
     @IBAction func addFood(_ sender: Any) {
+        
     }
     
     @IBOutlet weak var foodResultLabel: UILabel!
     @IBOutlet weak var servingsTextField: UITextField!
     
-    // Add delegate variable
+    var foodResult: FoodRep? {
+        didSet {
+            updateViews()
+        }
+    }
+    weak var delegate: FoodResultCellDelegate?
     
 }

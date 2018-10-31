@@ -8,102 +8,119 @@
 
 import UIKit
 
-class MealSnackDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FoodResultCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        foodSearchBar.delegate = self
+        foodResultsTableView.isHidden = true
     }
+    
+    // MARK: - Private Methods
+    
+    private func updateViews() {
+        guard let foodEntry = foodEntry else {
+            title = "Add new meal"
+            dateLabel.text = Date().formatted()
+            return
+        }
+        
+        dateLabel.text = foodEntry.date?.formatted()
+        //foods = foodEntry.foods
+        
+        var index = 0
+        switch foodEntry.mealType {
+        case MealType.breakfast.rawValue:
+            index = 0
+        case MealType.lunch.rawValue:
+            index = 1
+        case MealType.dinner.rawValue:
+            index = 2
+        case MealType.snack.rawValue:
+            index = 3
+        default:
+            break
+        }
+        
+        mealTypesSegmentedControl.selectedSegmentIndex = index
+        
+    }
+    
+    @IBAction func saveFoodEntry(_ sender: Any) {
+        
+        var mealType: MealType!
+        switch mealTypesSegmentedControl.selectedSegmentIndex {
+        case 0:
+            mealType = MealType.breakfast
+        case 1:
+            mealType = MealType.lunch
+        case 2:
+            mealType = MealType.dinner
+        case 3:
+            mealType = MealType.snack
+        default:
+            break
+        }
+        
+        if let foodEntry = foodEntry {
+            //update entry
+        } else {
+            foodEntryController?.createAFoodEntry(with: mealType, foods: self.foods)
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - FoodResultCellDelegate
+    
+    func addFoodResult(from cell: FoodResultTableViewCell) {
+        guard let foodResult = cell.foodResult else { return }
+        
+        let food = foodEntryController?.createFood(from: foodResult, serving: 1.0)
+    }
+    
+    // MARK: - UISearchBarDelegate
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = foodSearchBar.text else { return }
+        
+        foodResultsTableView.isHidden = false
+        
+    }
+    
+    // MARK: - Table view data source
 
-//    // MARK: - Table view data source
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return foodResults.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FoodResultCell", for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell()}
+        
+        cell.foodResult = foodResults[indexPath.row]
+        cell.delegate = self
+        
         return cell
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    // MARK: - UIPickerViewDelegate & UIPickerViewDataSource
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return mealTypes.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return mealTypes[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //Save meal type to create food entry.
-    }
     
     // MARK: - Properties
     
-    let mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"]
-
-    @IBOutlet weak var mealTypePicker: UIPickerView!
+    var foodEntry: FoodEntry?
+    var foodEntryController: FoodEntryController?
+    var foodResults: [FoodRep] = [FoodRep()] //for testing only
+    var foods: [Food] = []
+    
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var mealTypesSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var foodSearchBar: UISearchBar!
+    @IBOutlet weak var foodResultsTableView: UITableView!
 }

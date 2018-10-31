@@ -17,6 +17,7 @@ enum MealType: String {
 }
 
 extension FoodEntry {
+    
     @discardableResult convenience init(mealType: MealType, foods: [Food], date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
@@ -30,5 +31,4 @@ extension FoodEntry {
         
         
     }
-    
 }
