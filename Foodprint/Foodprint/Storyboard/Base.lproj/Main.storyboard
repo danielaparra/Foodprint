@@ -56,7 +56,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="N62-wn-cjy" kind="show" id="Izr-gE-BNO"/>
+                                            <segue destination="N62-wn-cjy" kind="show" identifier="AddMealSnack" id="Izr-gE-BNO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cH1-ns-b0e">
@@ -66,7 +66,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="vIa-CI-Cg6" kind="show" id="xKE-Gw-Dkg"/>
+                                            <segue destination="vIa-CI-Cg6" kind="show" identifier="ViewFoodDiary" id="xKE-Gw-Dkg"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -118,42 +118,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eoi-d8-I6r">
-                                <rect key="frame" x="0.0" y="285" width="375" height="382"/>
+                                <rect key="frame" x="0.0" y="276.5" width="375" height="390.5"/>
                                 <connections>
                                     <segue destination="bx8-4N-UDs" kind="embed" id="Mfc-bx-Hj5"/>
                                 </connections>
                             </containerView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-gf-3d1">
-                                <rect key="frame" x="0.0" y="132" width="375" height="137"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-gf-3d1">
+                                <rect key="frame" x="0.0" y="132" width="375" height="128.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="500" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-Tb-pzZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="October 31, 2018" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-gd-C0u">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="500" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-Tb-pzZ">
+                                        <rect key="frame" x="0.0" y="32.5" width="375" height="28"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="259" verticalCompressionResistancePriority="400" text="   Meal or snack?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwB-V0-1NI">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="80"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPl-Am-XhN">
+                                                <rect key="frame" x="0.0" y="4" width="13.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="259" horizontalCompressionResistancePriority="745" verticalCompressionResistancePriority="400" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-b0-BbL">
-                                                <rect key="frame" x="136" y="0.0" width="239" height="80"/>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="N62-wn-cjy" id="8K1-Vd-e5t"/>
-                                                    <outlet property="delegate" destination="N62-wn-cjy" id="1BL-2E-LKz"/>
-                                                </connections>
-                                            </pickerView>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mkv-9b-lnV">
+                                                <rect key="frame" x="21.5" y="0.0" width="332" height="29"/>
+                                                <segments>
+                                                    <segment title="Breakfast"/>
+                                                    <segment title="Lunch"/>
+                                                    <segment title="Dinner"/>
+                                                    <segment title="Snack"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXR-Eb-3KO">
+                                                <rect key="frame" x="361.5" y="4" width="13.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
-                                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.55000000000000004"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="5es-JU-91D"/>
-                                        </constraints>
                                     </stackView>
                                     <searchBar contentMode="redraw" verticalHuggingPriority="750" placeholder="Search a food:" translatesAutoresizingMaskIntoConstraints="NO" id="86N-NB-unv">
-                                        <rect key="frame" x="0.0" y="81" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="72.5" width="375" height="56"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="268" verticalCompressionResistancePriority="762" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mRY-Se-4cE">
-                                        <rect key="frame" x="0.0" y="137" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="128.5" width="375" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xqj-Pu-WgQ" customClass="FoodResultTableViewCell" customModule="Foodprint" customModuleProvider="target">
@@ -164,28 +174,28 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AEk-m9-1ic">
-                                                            <rect key="frame" x="17" y="7" width="343" height="30"/>
+                                                            <rect key="frame" x="17" y="22" width="343" height="0.0"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Food you searched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-Zx-2JX">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="176.5" height="30"/>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Food you searched" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldw-Zx-2JX">
+                                                                    <rect key="frame" x="343" y="0.0" width="0.0" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-N2-Aw2">
-                                                                    <rect key="frame" x="184.5" y="0.0" width="83.5" height="30"/>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serving(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMC-N2-Aw2">
+                                                                    <rect key="frame" x="343" y="0.0" width="0.0" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8IW-GR-hkq">
-                                                                    <rect key="frame" x="276" y="0.0" width="29" height="30"/>
+                                                                <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8IW-GR-hkq">
+                                                                    <rect key="frame" x="343" y="0.0" width="0.0" height="30"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
-                                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-2f-dE5">
-                                                                    <rect key="frame" x="313" y="0.0" width="30" height="30"/>
+                                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="254" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-2f-dE5">
+                                                                    <rect key="frame" x="343" y="0.0" width="0.0" height="30"/>
                                                                     <state key="normal" title="Add"/>
                                                                     <connections>
                                                                         <action selector="addFood:" destination="xqj-Pu-WgQ" eventType="touchUpInside" id="bUN-Vl-esn"/>
@@ -227,9 +237,6 @@
                     <navigationItem key="navigationItem" title="Add food entry" id="teg-TK-7e2">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="PW8-SN-xt7"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="mealTypePicker" destination="Wn2-b0-BbL" id="zpA-PN-Sau"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsH-uz-ahp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,7 +247,7 @@
             <objects>
                 <tableViewController id="bx8-4N-UDs" customClass="FoodsAddedTableViewController" customModule="Foodprint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Kr-s0-DSj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="382"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="390.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="  Foods you ate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XGf-c6-5ki">
@@ -312,7 +319,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="N62-wn-cjy" kind="show" id="SgD-CU-Orn"/>
+                                    <segue destination="N62-wn-cjy" kind="show" identifier="ViewMealSnack" id="SgD-CU-Orn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -347,6 +354,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Izr-gE-BNO"/>
+        <segue reference="SgD-CU-Orn"/>
     </inferredMetricsTieBreakers>
 </document>

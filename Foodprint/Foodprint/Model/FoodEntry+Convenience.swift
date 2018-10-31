@@ -17,17 +17,17 @@ enum MealType: String {
 }
 
 extension FoodEntry {
-    @discardableResult convenience init(mealType: MealType, date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init(mealType: MealType, foods: [Food], date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
         var total = 0.0
-        if let count = self.foods?.count {
-            let foods = self.foods?.allObjects as! [Food]
+        if foods.count > 0 {
             total = foods.compactMap { $0.gramsCo2ForServing }.reduce(0.0, +)
         }
         self.mealType = mealType.rawValue
         self.date = date
         self.totalCo2E = total
+        
         
     }
     

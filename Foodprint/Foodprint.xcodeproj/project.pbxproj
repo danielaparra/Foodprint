@@ -23,6 +23,7 @@
 		7BF067482188D59B0072076D /* FoodsAddedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067472188D59B0072076D /* FoodsAddedTableViewController.swift */; };
 		7BF0674A2188E1100072076D /* FoodResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF067492188E1100072076D /* FoodResultTableViewCell.swift */; };
 		7BF4F6922188FF1A006ABA3B /* Food+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */; };
+		7BF4F6942189025A006ABA3B /* FoodEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F6932189025A006ABA3B /* FoodEntryController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7BF067472188D59B0072076D /* FoodsAddedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FoodsAddedTableViewController.swift; path = "Foodprint/View Controllers/FoodsAddedTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		7BF067492188E1100072076D /* FoodResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodResultTableViewCell.swift; sourceTree = "<group>"; };
 		7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+Convenience.swift"; sourceTree = "<group>"; };
+		7BF4F6932189025A006ABA3B /* FoodEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		7BF06719218793D30072076D /* Foodprint */ = {
 			isa = PBXGroup;
 			children = (
+				7BF4F6932189025A006ABA3B /* FoodEntryController.swift */,
 				7BF067422188AE040072076D /* View Controllers */,
 				7BF0673A2188A1C60072076D /* Storyboard */,
 				7BF06739218807CD0072076D /* Model */,
@@ -210,6 +213,7 @@
 				7BF067442188AE2B0072076D /* HomeViewController.swift in Sources */,
 				7BF06738218807200072076D /* FoodRep.swift in Sources */,
 				7BF06723218793D30072076D /* Foodprint.xcdatamodeld in Sources */,
+				7BF4F6942189025A006ABA3B /* FoodEntryController.swift in Sources */,
 				7BF067462188B1CB0072076D /* MealSnackDetailViewController.swift in Sources */,
 				7BF067482188D59B0072076D /* FoodsAddedTableViewController.swift in Sources */,
 				7BF0671B218793D30072076D /* AppDelegate.swift in Sources */,
