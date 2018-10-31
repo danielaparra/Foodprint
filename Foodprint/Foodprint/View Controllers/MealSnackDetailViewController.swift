@@ -12,9 +12,12 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        guard let foodsAddedTVC = children.first as? FoodsAddedTableViewController else { return }
+        self.foodsAddedTVC = foodsAddedTVC
         foodSearchBar.delegate = self
         foodResultsTableView.isHidden = true
+        updateViews()
     }
     
     // MARK: - Private Methods
@@ -26,9 +29,10 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
             return
         }
         
+        title = "View your meal"
         dateLabel.text = foodEntry.date?.formatted()
         let array = foodEntry.foods?.allObjects as! [Food]
-        foods = array
+        foodEntryController.foodsAddedFromResults = array
         
         var index = 0
         switch foodEntry.mealType {
@@ -45,7 +49,6 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         mealTypesSegmentedControl.selectedSegmentIndex = index
-        
     }
     
     @IBAction func saveFoodEntry(_ sender: Any) {
@@ -67,7 +70,7 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         if let foodEntry = foodEntry {
             //update entry
         } else {
-            foodEntryController?.createAFoodEntry(with: mealType, foods: self.foods)
+            foodEntryController.createAFoodEntry(with: mealType, foods: foodEntryController.foodsAddedFromResults)
         }
         
         navigationController?.popViewController(animated: true)
@@ -79,10 +82,9 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         guard let foodResult = cell.foodResult,
             let serving = cell.selectedServing else { return }
         
-        let food = foodEntryController?.createFood(from: foodResult, serving: serving)
-        if let food = food {
-            foods.append(food)
-        }
+        let food = foodEntryController.createFoodFromResults(from: foodResult, serving: serving)
+        foodEntryController.foodsAddedFromResults.append(food)
+        foodsAddedTVC?.tableView.reloadData()
     }
     
     // MARK: - UISearchBarDelegate
@@ -92,32 +94,28 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         
         foodResultsTableView.isHidden = false
         
-        //Perform search on API, but currently using test.
-        
+        foodEntryController.performSearch(for: searchTerm) { (_) in
+            DispatchQueue.main.async {
+                self.foodResultsTableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table view data source
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodResults.count
+        return foodEntryController.foodSearchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FoodResultCell", for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell()}
         
-        cell.foodResult = foodResults[indexPath.row]
+        cell.foodResult = foodEntryController.foodSearchResults[indexPath.row]
         cell.delegate = self
         
         return cell
     }
 
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
-    
     // MARK: - Properties
     
     var foodEntry: FoodEntry? {
@@ -125,10 +123,9 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
             if isViewLoaded { updateViews() }
         }
     }
-    var foodEntryController: FoodEntryController?
-    var foodResults: [FoodRep] = [FoodRep()] //for testing only
-    var foods: [Food] = []
-    
+
+    let foodEntryController = FoodEntryController.shared
+    var foodsAddedTVC: FoodsAddedTableViewController?
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mealTypesSegmentedControl: UISegmentedControl!

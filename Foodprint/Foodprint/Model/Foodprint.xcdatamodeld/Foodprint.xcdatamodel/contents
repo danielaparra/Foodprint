@@ -13,11 +13,12 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mealType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sectionDate" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalCo2E" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Food" inverseName="foodEntry" inverseEntity="Food" syncable="YES"/>
     </entity>
     <elements>
         <element name="Food" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="FoodEntry" positionX="-54" positionY="27" width="128" height="120"/>
+        <element name="FoodEntry" positionX="-54" positionY="27" width="128" height="135"/>
     </elements>
 </model>

@@ -11,16 +11,11 @@ import CoreData
 
 class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return fetchedResultsController.sections?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,7 +29,7 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
         let foodEntry = fetchedResultsController.object(at: indexPath)
         
         cell.textLabel?.text = foodEntry.mealType
-        cell.detailTextLabel?.text = foodEntry.date?.formatted()
+        //cell.detailTextLabel?.text = foodEntry.date?.formatted()
 
         return cell
     }
@@ -87,6 +82,11 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
         }
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionInfo = fetchedResultsController.sections?[section]
+        return sectionInfo?.name.capitalized
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,18 +95,13 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
             destinationVC.foodEntry = fetchedResultsController.object(at: indexPath)
-            destinationVC.foodEntryController = foodEntryController
+            //destinationVC.foodEntryController = foodEntryController
             
-        } else if segue.identifier == "AddFoodEntry" {
-            guard let destinationVC = segue.destination as? MealSnackDetailViewController else { return }
-            
-            destinationVC.foodEntryController = foodEntryController
         }
     }
     
     // MARK: - Properties
     
-    var foodEntryController: FoodEntryController?
     lazy var fetchedResultsController: NSFetchedResultsController<FoodEntry> = {
         let fetchRequest: NSFetchRequest<FoodEntry> = FoodEntry.fetchRequest()
         
@@ -114,7 +109,7 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let moc = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "sectionDate", cacheName: nil)
         
         frc.delegate = self
         try! frc.performFetch()

@@ -29,6 +29,5 @@ extension FoodEntry {
         self.date = date
         self.totalCo2E = total
         
-        
     }
 }

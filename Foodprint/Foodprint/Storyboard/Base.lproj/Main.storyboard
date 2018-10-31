@@ -226,7 +226,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eoi-d8-I6r">
                                 <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
                                 <connections>
-                                    <segue destination="bx8-4N-UDs" kind="embed" id="Mfc-bx-Hj5"/>
+                                    <segue destination="bx8-4N-UDs" kind="embed" identifier="AddedFoodTVC" id="Mfc-bx-Hj5"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -349,7 +349,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Food Diary" id="rSs-mI-fNL">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="7zN-SN-z5h">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7zN-SN-z5h">
                             <connections>
                                 <segue destination="N62-wn-cjy" kind="show" identifier="AddFoodEntry" id="NeK-hy-yfM"/>
                             </connections>

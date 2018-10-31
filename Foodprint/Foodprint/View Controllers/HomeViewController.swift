@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
         let context = CoreDataStack.shared.mainContext
         let fetchRequest: NSFetchRequest<FoodEntry> = FoodEntry.fetchRequest()
         let startDayPredicate = NSPredicate(format: "date >= %@", startOfDay as NSDate)
-        let endDayPredicate = NSPredicate(format: "date >= %@", endOfDay as NSDate)
+        let endDayPredicate = NSPredicate(format: "date <= %@", endOfDay as NSDate)
         let compoundPredicate = NSCompoundPredicate(type: .and, subpredicates: [startDayPredicate, endDayPredicate])
         fetchRequest.predicate = compoundPredicate
         
@@ -44,28 +44,12 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
         }
         
         let totalCo2E = foodEntries.compactMap { $0.totalCo2E }.reduce(0.0, +)
-        todaysTotalCo2E.text = "\(totalCo2E) g"
-    }
-    
-
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddMealSnack" {
-            guard let destinationVC = segue.destination as? MealSnackDetailViewController else { return }
-            
-            destinationVC.foodEntryController = foodEntryController
-            
-        } else if segue.identifier == "ViewFoodDiary" {
-            guard let destinationVC = segue.destination as? MyFoodDiaryTableViewController else { return }
-            
-            destinationVC.foodEntryController = foodEntryController
-        }
+        let roundedNumber = totalCo2E.rounded()
+        todaysTotalCo2E.text = "\(roundedNumber) g"
     }
 
     // MARK: - Properties
     
-    let foodEntryController = FoodEntryController()
     @IBOutlet weak var todaysTotalCo2E: UILabel!
     @IBOutlet weak var chartView: UIView!
     
