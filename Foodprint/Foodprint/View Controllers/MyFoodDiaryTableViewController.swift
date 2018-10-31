@@ -13,26 +13,28 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return fetchedResultsController.fetchedObjects?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        cell.textLabel?.text
-        cell.detailTextLabel?.text
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoodEntryCell", for: indexPath)
+        
+        let foodEntry = fetchedResultsController.object(at: indexPath)
+        
+        cell.textLabel?.text = foodEntry.mealType
+        cell.detailTextLabel?.text = foodEntry.date?.formatted()
 
         return cell
     }
@@ -40,8 +42,8 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            //Delete foodEntry from core data.
+            tableView.deleteRows(at: [indexPath], with: .fade) //Do I need this?
         }
     }
     
@@ -85,11 +87,6 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
         }
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionInfo = fetchedResultsController.sections?[section]
-        return sectionInfo?.name.capitalized
-    }
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,13 +94,30 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
             guard let destinationVC = segue.destination as? MealSnackDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
+            destinationVC.foodEntry = fetchedResultsController.object(at: indexPath)
+            destinationVC.foodEntryController = foodEntryController
             
+        } else if segue.identifier == "AddFoodEntry" {
+            guard let destinationVC = segue.destination as? MealSnackDetailViewController else { return }
             
+            destinationVC.foodEntryController = foodEntryController
         }
     }
     
     // MARK: - Properties
     
     var foodEntryController: FoodEntryController?
-    lazy var fetchedResultsController
+    lazy var fetchedResultsController: NSFetchedResultsController<FoodEntry> = {
+        let fetchRequest: NSFetchRequest<FoodEntry> = FoodEntry.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let moc = CoreDataStack.shared.mainContext
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        
+        frc.delegate = self
+        try! frc.performFetch()
+        return frc
+    }()
 }

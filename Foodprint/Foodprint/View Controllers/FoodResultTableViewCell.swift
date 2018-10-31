@@ -22,7 +22,9 @@ class FoodResultTableViewCell: UITableViewCell {
     }
     
     @IBAction func addFood(_ sender: Any) {
-        
+        guard let serving = servingsTextField.text else { return }
+        selectedServing = Double(serving)
+        delegate?.addFoodResult(from: self)
     }
     
     @IBOutlet weak var foodResultLabel: UILabel!
@@ -33,6 +35,7 @@ class FoodResultTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    var selectedServing: Double?
     weak var delegate: FoodResultCellDelegate?
     
 }

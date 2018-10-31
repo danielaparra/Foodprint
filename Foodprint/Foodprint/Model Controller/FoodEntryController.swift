@@ -11,6 +11,10 @@ import CoreData
 
 class FoodEntryController {
     
+    init() {
+        createAFoodEntry(with: .lunch)
+    }
+    
     // MARK: - CRUD Methods with Core Data
     
     func createAFoodEntry(with mealType: MealType, foods: [Food] = [], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

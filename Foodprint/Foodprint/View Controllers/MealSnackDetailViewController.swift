@@ -27,7 +27,8 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         dateLabel.text = foodEntry.date?.formatted()
-        //foods = foodEntry.foods
+        let array = foodEntry.foods?.allObjects as! [Food]
+        foods = array
         
         var index = 0
         switch foodEntry.mealType {
@@ -75,9 +76,13 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
     // MARK: - FoodResultCellDelegate
     
     func addFoodResult(from cell: FoodResultTableViewCell) {
-        guard let foodResult = cell.foodResult else { return }
+        guard let foodResult = cell.foodResult,
+            let serving = cell.selectedServing else { return }
         
-        let food = foodEntryController?.createFood(from: foodResult, serving: 1.0)
+        let food = foodEntryController?.createFood(from: foodResult, serving: serving)
+        if let food = food {
+            foods.append(food)
+        }
     }
     
     // MARK: - UISearchBarDelegate
@@ -86,6 +91,8 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         guard let searchTerm = foodSearchBar.text else { return }
         
         foodResultsTableView.isHidden = false
+        
+        //Perform search on API, but currently using test.
         
     }
     
@@ -113,7 +120,11 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
     
     // MARK: - Properties
     
-    var foodEntry: FoodEntry?
+    var foodEntry: FoodEntry? {
+        didSet {
+            if isViewLoaded { updateViews() }
+        }
+    }
     var foodEntryController: FoodEntryController?
     var foodResults: [FoodRep] = [FoodRep()] //for testing only
     var foods: [Food] = []

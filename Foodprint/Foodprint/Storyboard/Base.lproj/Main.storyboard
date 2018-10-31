@@ -322,7 +322,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="8SP-Ih-L63" style="IBUITableViewCellStyleDefault" id="5ve-lV-Ktt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FoodEntryCell" textLabel="8SP-Ih-L63" style="IBUITableViewCellStyleDefault" id="5ve-lV-Ktt">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5ve-lV-Ktt" id="j9N-LW-3hd">
@@ -348,7 +348,13 @@
                             <outlet property="delegate" destination="vIa-CI-Cg6" id="lPQ-6b-M0d"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Food Diary" id="rSs-mI-fNL"/>
+                    <navigationItem key="navigationItem" title="My Food Diary" id="rSs-mI-fNL">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="7zN-SN-z5h">
+                            <connections>
+                                <segue destination="N62-wn-cjy" kind="show" identifier="AddFoodEntry" id="NeK-hy-yfM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHg-aC-tTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -374,6 +380,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SgD-CU-Orn"/>
+        <segue reference="NeK-hy-yfM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -54,6 +54,7 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
         if segue.identifier == "AddMealSnack" {
             guard let destinationVC = segue.destination as? MealSnackDetailViewController else { return }
             
+            destinationVC.foodEntryController = foodEntryController
             
         } else if segue.identifier == "ViewFoodDiary" {
             guard let destinationVC = segue.destination as? MyFoodDiaryTableViewController else { return }
