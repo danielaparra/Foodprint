@@ -25,6 +25,7 @@
 		7BF4F6922188FF1A006ABA3B /* Food+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */; };
 		7BF4F6942189025A006ABA3B /* FoodEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F6932189025A006ABA3B /* FoodEntryController.swift */; };
 		7BF4F699218954C6006ABA3B /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F698218954C6006ABA3B /* DateExtension.swift */; };
+		7BF4F69F218A71FF006ABA3B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF4F69E218A71FE006ABA3B /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		7BF4F6912188FF1A006ABA3B /* Food+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+Convenience.swift"; sourceTree = "<group>"; };
 		7BF4F6932189025A006ABA3B /* FoodEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryController.swift; sourceTree = "<group>"; };
 		7BF4F698218954C6006ABA3B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		7BF4F69E218A71FE006ABA3B /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				7BF06729218793D50072076D /* Info.plist */,
 				7BF4F698218954C6006ABA3B /* DateExtension.swift */,
 				7BF0673C2188A2B60072076D /* CoreDataStack.swift */,
+				7BF4F69E218A71FE006ABA3B /* HTTPMethod.swift */,
 				7BF0671A218793D30072076D /* AppDelegate.swift */,
 				7BF06724218793D50072076D /* Assets.xcassets */,
 			);
@@ -226,6 +229,7 @@
 				7BF06738218807200072076D /* FoodRep.swift in Sources */,
 				7BF06723218793D30072076D /* Foodprint.xcdatamodeld in Sources */,
 				7BF4F6942189025A006ABA3B /* FoodEntryController.swift in Sources */,
+				7BF4F69F218A71FF006ABA3B /* HTTPMethod.swift in Sources */,
 				7BF067462188B1CB0072076D /* MealSnackDetailViewController.swift in Sources */,
 				7BF067482188D59B0072076D /* FoodsAddedTableViewController.swift in Sources */,
 				7BF0671B218793D30072076D /* AppDelegate.swift in Sources */,

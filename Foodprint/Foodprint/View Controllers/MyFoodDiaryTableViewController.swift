@@ -14,12 +14,10 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return fetchedResultsController.sections?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
 
@@ -27,18 +25,16 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodEntryCell", for: indexPath)
         
         let foodEntry = fetchedResultsController.object(at: indexPath)
-        
         cell.textLabel?.text = foodEntry.mealType
-        //cell.detailTextLabel?.text = foodEntry.date?.formatted()
-
+    
         return cell
     }
 
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //Delete foodEntry from core data.
-            tableView.deleteRows(at: [indexPath], with: .fade) //Do I need this?
+            let foodEntry = fetchedResultsController.object(at: indexPath)
+            FoodEntryController.shared.deleteFoodEntryFromCoreData(foodEntry: foodEntry)
         }
     }
     
@@ -95,13 +91,11 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
                 let indexPath = tableView.indexPathForSelectedRow else { return }
             
             destinationVC.foodEntry = fetchedResultsController.object(at: indexPath)
-            //destinationVC.foodEntryController = foodEntryController
-            
         }
     }
     
     // MARK: - Properties
-    
+
     lazy var fetchedResultsController: NSFetchedResultsController<FoodEntry> = {
         let fetchRequest: NSFetchRequest<FoodEntry> = FoodEntry.fetchRequest()
         

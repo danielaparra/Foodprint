@@ -13,8 +13,8 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - Lifecyle Functions
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local

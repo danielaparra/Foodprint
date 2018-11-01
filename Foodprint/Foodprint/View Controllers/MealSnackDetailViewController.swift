@@ -20,6 +20,13 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         updateViews()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        foodEntryController.clearAddedFoods()
+        foodEntryController.clearfoodSearchResults()
+    }
+    
     // MARK: - Private Methods
     
     private func updateViews() {
@@ -68,10 +75,16 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         if let foodEntry = foodEntry {
-            //update entry
+            let array = foodEntry.foods?.allObjects as! [Food]
+            
+            let difference = compare(oldArray: array, to: foodEntryController.foodsAddedFromResults)
+            foodEntryController.updateFoodEntry(foodEntry: foodEntry, mealType: mealType, with: difference)
         } else {
             foodEntryController.createAFoodEntry(with: mealType, foods: foodEntryController.foodsAddedFromResults)
         }
+        
+        foodEntryController.clearAddedFoods()
+        foodEntryController.clearfoodSearchResults()
         
         navigationController?.popViewController(animated: true)
     }
@@ -114,6 +127,22 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         cell.delegate = self
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    // MARK: - Private Methods
+    
+    private func compare(oldArray: [Food], to newArray: [Food]) -> [Food] {
+        let difference: [Food] = newArray.compactMap { (newArrayElement) in
+            if !oldArray.contains(newArrayElement) {
+                return newArrayElement
+            }
+            return nil
+        }
+        return difference
     }
 
     // MARK: - Properties

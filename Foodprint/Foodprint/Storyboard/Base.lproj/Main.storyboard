@@ -118,52 +118,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-gf-3d1">
-                                <rect key="frame" x="0.0" y="132" width="375" height="185.5"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="201.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="October 31, 2018" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-gd-C0u">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="17.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="17.5" id="uDv-GK-jAE"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="755" verticalCompressionResistancePriority="500" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-Tb-pzZ">
-                                        <rect key="frame" x="0.0" y="29.5" width="375" height="22"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPl-Am-XhN">
-                                                <rect key="frame" x="0.0" y="1" width="13.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mkv-9b-lnV">
-                                                <rect key="frame" x="21.5" y="0.0" width="332" height="23"/>
-                                                <segments>
-                                                    <segment title="Breakfast"/>
-                                                    <segment title="Lunch"/>
-                                                    <segment title="Dinner"/>
-                                                    <segment title="Snack"/>
-                                                </segments>
-                                            </segmentedControl>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXR-Eb-3KO">
-                                                <rect key="frame" x="361.5" y="1" width="13.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
                                     <searchBar contentMode="redraw" verticalHuggingPriority="750" verticalCompressionResistancePriority="751" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="60" placeholder="Search a food:" translatesAutoresizingMaskIntoConstraints="NO" id="86N-NB-unv">
-                                        <rect key="frame" x="0.0" y="63.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="xHw-5f-IvN"/>
                                         </constraints>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="268" verticalCompressionResistancePriority="762" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mRY-Se-4cE">
-                                        <rect key="frame" x="0.0" y="135.5" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodResultCell" rowHeight="60" id="xqj-Pu-WgQ" customClass="FoodResultTableViewCell" customModule="Foodprint" customModuleProvider="target">
@@ -221,6 +186,41 @@
                                             <outlet property="delegate" destination="N62-wn-cjy" id="UFa-Vf-i7d"/>
                                         </connections>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="October 31, 2018" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-gd-C0u">
+                                        <rect key="frame" x="0.0" y="134" width="375" height="17.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17.5" id="uDv-GK-jAE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="755" verticalCompressionResistancePriority="500" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RMW-Tb-pzZ">
+                                        <rect key="frame" x="0.0" y="163.5" width="375" height="38"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPl-Am-XhN">
+                                                <rect key="frame" x="0.0" y="9" width="13.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mkv-9b-lnV">
+                                                <rect key="frame" x="21.5" y="5" width="332" height="29"/>
+                                                <segments>
+                                                    <segment title="Breakfast"/>
+                                                    <segment title="Lunch"/>
+                                                    <segment title="Dinner"/>
+                                                    <segment title="Snack"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXR-Eb-3KO">
+                                                <rect key="frame" x="361.5" y="9" width="13.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eoi-d8-I6r">
@@ -233,7 +233,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FCs-gf-3d1" secondAttribute="trailing" id="0HA-Dt-vmM"/>
-                            <constraint firstItem="FCs-gf-3d1" firstAttribute="top" secondItem="wvq-xg-Qxo" secondAttribute="top" constant="16" id="GP5-aD-Sof"/>
+                            <constraint firstItem="FCs-gf-3d1" firstAttribute="top" secondItem="wvq-xg-Qxo" secondAttribute="top" id="GP5-aD-Sof"/>
                             <constraint firstItem="Eoi-d8-I6r" firstAttribute="height" secondItem="K2v-dS-zxx" secondAttribute="height" multiplier="1/2" id="IER-jB-3jr"/>
                             <constraint firstItem="FCs-gf-3d1" firstAttribute="leading" secondItem="K2v-dS-zxx" secondAttribute="leading" id="Kq8-4g-bzh"/>
                             <constraint firstItem="Eoi-d8-I6r" firstAttribute="top" secondItem="FCs-gf-3d1" secondAttribute="bottom" constant="16" id="LCb-T0-IIQ"/>
