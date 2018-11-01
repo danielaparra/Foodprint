@@ -12,14 +12,33 @@ import CoreData
 class FoodEntryController {
     static let shared = FoodEntryController()
     
+    init() {
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+        
+        let startOfDay = calendar.startOfDay(for: Date())
+        let today = calendar.component(.weekday, from: Date())
+        print(today)
+        guard let yesterday = calendar.date(byAdding: .day, value: -2, to: startOfDay),
+            let startOfWeekPlus1 = calendar.date(byAdding: .day, value: -5, to: startOfDay) else { return }
+        
+//        FoodEntry(mealType: .breakfast, foods: [Food(foodRep: FoodRep(), serving: 2)], date: yesterday, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 1)], date: startOfWeek, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .breakfast, foods: [Food(foodRep: FoodRep(), serving: 4)], date: yesterday, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 6)], date: startOfWeekPlus1, context: CoreDataStack.shared.mainContext)
+
+        
+        saveToPersistentStore()
+    }
+    
     // MARK: - Core Data
     
     func createAFoodEntry(with mealType: MealType, foods: [Food] = [], context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        let foodEntry = FoodEntry(mealType: mealType, foods: foods, context: context)
+        FoodEntry(mealType: mealType, foods: foods, context: context)
         
-        for food in foods {
-            foodEntry.addToFoods(food)
-        }
+//        for food in foods {
+//            foodEntry.addToFoods(food)
+//        }
         
         saveToPersistentStore()
     }

@@ -18,7 +18,7 @@ enum MealType: String {
 
 extension FoodEntry {
     
-    @discardableResult convenience init(mealType: MealType, foods: [Food], date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init(mealType: MealType, foods: [Food] = [], date: Date = Date(), context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
         var total = 0.0
@@ -28,6 +28,9 @@ extension FoodEntry {
         self.mealType = mealType.rawValue
         self.date = date
         self.totalCo2E = total
-        
+        self.sectionDate = date.formatted()
+        for food in foods {
+            self.addToFoods(food)
+        }
     }
 }

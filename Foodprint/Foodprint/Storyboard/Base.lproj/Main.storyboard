@@ -72,29 +72,29 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXe-hF-52U">
-                                <rect key="frame" x="0.0" y="394.5" width="375" height="272.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When I grow up I wanna be a chart." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB1-tT-1IL">
-                                        <rect key="frame" x="53" y="125" width="269" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                                <rect key="frame" x="0.0" y="394.5" width="375" height="214.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dan-gold-298710-unsplash" translatesAutoresizingMaskIntoConstraints="NO" id="8eG-ms-YBC">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1lc-hs-jck"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bXe-hF-52U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bcv-O0-Fay"/>
-                            <constraint firstAttribute="bottom" secondItem="bXe-hF-52U" secondAttribute="bottom" id="GTA-gp-ntt"/>
                             <constraint firstItem="fye-KG-Fl1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="Gz8-VM-x8T"/>
                             <constraint firstItem="bXe-hF-52U" firstAttribute="top" secondItem="fye-KG-Fl1" secondAttribute="bottom" constant="40" id="KTL-Ii-yb5"/>
+                            <constraint firstItem="8eG-ms-YBC" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="NdF-2t-eYx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fye-KG-Fl1" secondAttribute="trailing" constant="64" id="Pad-1P-hyP"/>
                             <constraint firstItem="fye-KG-Fl1" firstAttribute="top" secondItem="AR4-U7-nPR" secondAttribute="bottom" constant="40" id="dnh-UF-2r9"/>
                             <constraint firstItem="AR4-U7-nPR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eed-cq-6WC"/>
+                            <constraint firstItem="8eG-ms-YBC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ij6-a2-2Lk"/>
                             <constraint firstItem="AR4-U7-nPR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="lgU-eu-gCR"/>
+                            <constraint firstItem="8eG-ms-YBC" firstAttribute="top" secondItem="bXe-hF-52U" secondAttribute="bottom" constant="8" id="sGF-Sc-fsZ"/>
+                            <constraint firstItem="8eG-ms-YBC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tBk-ic-50t"/>
                             <constraint firstItem="bXe-hF-52U" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="v4O-Pb-3FB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -379,7 +379,10 @@
             <point key="canvasLocation" x="231" y="133"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="dan-gold-298710-unsplash" width="5512" height="3675"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NeK-hy-yfM"/>
+        <segue reference="Izr-gE-BNO"/>
     </inferredMetricsTieBreakers>
 </document>

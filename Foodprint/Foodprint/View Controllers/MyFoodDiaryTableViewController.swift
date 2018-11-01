@@ -10,6 +10,12 @@ import UIKit
 import CoreData
 
 class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+    
+//    override func viewDidLoad() {
+//        
+//            print(self.fetchedResultsController.fetchedObjects)
+//
+//    }
 
     // MARK: - Table view data source
 
@@ -103,7 +109,7 @@ class MyFoodDiaryTableViewController: UITableViewController, NSFetchedResultsCon
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let moc = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: "sectionDate", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         
         frc.delegate = self
         try! frc.performFetch()
