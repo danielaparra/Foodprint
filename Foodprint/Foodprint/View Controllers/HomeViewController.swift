@@ -8,9 +8,23 @@
 
 import UIKit
 import CoreData
-import Charts
+import SwiftChart
 
-class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, ChartViewDelegate {
+class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, ChartDelegate {
+    
+    // MARK: - ChartDelegate
+    
+    func didTouchChart(_ chart: Chart, indexes: [Int?], x: Double, left: CGFloat) {
+        
+    }
+    
+    func didFinishTouchingChart(_ chart: Chart) {
+        
+    }
+    
+    func didEndTouchingChart(_ chart: Chart) {
+        
+    }
     
     // MARK: - Lifecyle Functions
 
@@ -22,7 +36,6 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         
         let startOfDay = calendar.startOfDay(for: Date())
         let today = calendar.component(.weekday, from: Date())
-        print(today)
         guard let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay),
             let startOfWeek = calendar.date(byAdding: .day, value: -6, to: startOfDay) else { return }
         
@@ -48,11 +61,13 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         }
         
         let totalCo2E = foodEntries.compactMap { $0.totalCo2E }.reduce(0.0, +)
-        let totalInTons = totalCo2E / 907184.74
-        let displayedNumber = Double(round(100*totalInTons)/100)
-        todaysTotalCo2E.text = "\(displayedNumber) tons of"
+        let totalInGrams = totalCo2E
+        let displayedNumber = totalInGrams.rounded()//Double(round(100*totalInTons)/100)
+        todaysTotalCo2E.text = "\(displayedNumber) g of"
         
-        if displayedNumber > 1.71 {
+        let limit = (1.7 / 365 * 907184.74)
+        
+        if displayedNumber > limit {
             todaysTotalCo2E.textColor = .red
         }
     }
@@ -68,27 +83,40 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
         var dayTotals: [String: Double] = [:]
         do {
             let foodEntries = try context.fetch(fetchRequest)
-            print(foodEntries)
-            
             
             for foodEntry in foodEntries {
                 if dayTotals.keys.contains(foodEntry.sectionDate!) {
                     guard let oldValue = dayTotals[foodEntry.sectionDate!] else { return }
-                    dayTotals[foodEntry.sectionDate!] = oldValue + foodEntry.totalCo2E
+                    dayTotals[foodEntry.sectionDate!] = oldValue + (foodEntry.totalCo2E)
                 } else {
                     dayTotals[foodEntry.sectionDate!] = foodEntry.totalCo2E
                 }
             }
+            print(dayTotals)
     
         } catch {
             NSLog("Error fetching the past week's food entries.")
         }
         
-        let days = Array(dayTotals.keys).sorted()
+        var days = Array(dayTotals.keys).sorted()
+//        let first = days[0]
+//        days.remove(at: 0)
+//        days.append(first)
+//        days = days.reversed()
+        
+        
+        print(days)
+
         var data: [Double] = []
         for day in days {
             data.append(dayTotals[day]!)
         }
+//        let dataFirst = data[0]
+//        data.remove(at: 0)
+//        data.append(dataFirst)
+//        data = data.reversed()
+        
+        print(data)
         
         buildChart(with: data, today: todaysWeekday)
     }
@@ -97,57 +125,32 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     private func buildChart(with data: [Double], today: Int) {
         
-        lineChartView = LineChartView(frame: CGRect(x: 0, y: 0, width: chartView.frame.width, height: chartView.frame.height))
-        
-        lineChartView.delegate = self
-        lineChartView.chartDescription?.enabled = false
-        lineChartView.rightAxis.enabled = false
-        lineChartView.animate(xAxisDuration: 2.5)
-        lineChartView.xAxis.labelPosition = .bottom
-        lineChartView.xAxis.labelCount = 7
-        
+        chart = Chart(frame: CGRect(x: 0, y: 0, width: chartView.frame.width, height: chartView.frame.height))
+        chart.delegate = self
+        if !subViewIsAdded {
+            chartView.addSubview(chart)
+            subViewIsAdded = true
+        }
         var xAxis = Array(daysOfTheWeek[today..<daysOfTheWeek.endIndex])
         let secondHalf = daysOfTheWeek[0...(today-1)]
         xAxis.append(contentsOf: secondHalf)
-        print(xAxis)
-        print(data)
         
-        var dataEntries: [ChartDataEntry] = []
+        let limit = (1.7 / 365 * 907184.74)
+        let series = ChartSeries(data)
+        series.colors = (above: ChartColors.redColor(), below: ChartColors.greenColor(), zeroLevel: limit)
+        series.area = true
         
-        for i in 0..<data.count {
-            let dataEntry = ChartDataEntry(x: Double(i), y: data[i])
-            dataEntries.append(dataEntry)
-        }
+        chart.minY = 0.0
         
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "grams of CO2 equivalent")
-        chartDataSet.setColor(.black)
-        chartDataSet.drawFilledEnabled = true
+        chart.xLabels = [0,1,2,3,4,5,6,7]
+        chart.xLabelsFormatter = { String(Int($1)) + "days ago"}
         
-        let gradientColors = [ChartColorTemplates.colorFromString("#7bd195").cgColor,
-                              ChartColorTemplates.colorFromString("#ffffff").cgColor]
-        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+        chart.add(series)
         
-        chartDataSet.fillAlpha = 1
-        chartDataSet.fill = Fill(linearGradient: gradient, angle: 90)
-        chartDataSet.mode = (chartDataSet.mode == .cubicBezier) ? .linear : .cubicBezier
-        
-        let chartData = LineChartData(dataSet: chartDataSet)
-        lineChartView.data = chartData
-        
-        let ll = ChartLimitLine(limit: 907184.74, label: "1 ton")
-        lineChartView.leftAxis.addLimitLine(ll)
-        
-        if !self.subViewIsAdded {
-            self.chartView.addSubview(lineChartView)
-            self.subViewIsAdded = true
-        }
-        
-        
-//        let centerX = NSLayoutConstraint(item: lineChartView, attribute: .centerX, relatedBy: .equal, toItem: chartView, attribute: .centerX, multiplier: 1, constant: 0)
+//        let centerX = NSLayoutConstraint(item: chart, attribute: .centerX, relatedBy: .equal, toItem: chartView, attribute: .centerX, multiplier: 1, constant: 0)
 //
 //        NSLayoutConstraint.activate([centerX])
-        
-        
+
     }
 
     // MARK: - Properties
@@ -158,6 +161,6 @@ class HomeViewController: UIViewController, NSFetchedResultsControllerDelegate, 
     
     var subViewIsAdded: Bool = false
     let vegetarianCO2eDaily = 1.7 //From tons to grams: * 907184.74
-    var lineChartView = LineChartView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    var chart = Chart()
     var daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 }

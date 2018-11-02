@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BE366EEDB205B1A0493CB2A /* Pods_Foodprint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23BC1B0CA19F2D43C034B6C /* Pods_Foodprint.framework */; };
+		16E5A513B1A66FE778487551 /* Pods_Foodprint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773687995A9FB4B17E1258AB /* Pods_Foodprint.framework */; };
 		7BF0671B218793D30072076D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF0671A218793D30072076D /* AppDelegate.swift */; };
 		7BF06720218793D30072076D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF0671E218793D30072076D /* Main.storyboard */; };
 		7BF06723218793D30072076D /* Foodprint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7BF06721218793D30072076D /* Foodprint.xcdatamodeld */; };
@@ -30,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		773687995A9FB4B17E1258AB /* Pods_Foodprint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodprint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF06717218793D30072076D /* Foodprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF0671A218793D30072076D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF0671F218793D30072076D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,9 +52,8 @@
 		7BF4F6932189025A006ABA3B /* FoodEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryController.swift; sourceTree = "<group>"; };
 		7BF4F698218954C6006ABA3B /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7BF4F69E218A71FE006ABA3B /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		C23BC1B0CA19F2D43C034B6C /* Pods_Foodprint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Foodprint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E506C68BAAF0A5694BB5032D /* Pods-Foodprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodprint.release.xcconfig"; path = "Target Support Files/Pods-Foodprint/Pods-Foodprint.release.xcconfig"; sourceTree = "<group>"; };
-		FA4792FA317435DDD67C63CB /* Pods-Foodprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodprint.debug.xcconfig"; path = "Target Support Files/Pods-Foodprint/Pods-Foodprint.debug.xcconfig"; sourceTree = "<group>"; };
+		C93283E5F1CCA76D781B6115 /* Pods-Foodprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodprint.debug.xcconfig"; path = "Target Support Files/Pods-Foodprint/Pods-Foodprint.debug.xcconfig"; sourceTree = "<group>"; };
+		D786D305E37CF9F366DF8AFC /* Pods-Foodprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Foodprint.release.xcconfig"; path = "Target Support Files/Pods-Foodprint/Pods-Foodprint.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BE366EEDB205B1A0493CB2A /* Pods_Foodprint.framework in Frameworks */,
+				16E5A513B1A66FE778487551 /* Pods_Foodprint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,16 +71,16 @@
 		0B340FF2F83D082AE92FB050 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FA4792FA317435DDD67C63CB /* Pods-Foodprint.debug.xcconfig */,
-				E506C68BAAF0A5694BB5032D /* Pods-Foodprint.release.xcconfig */,
+				C93283E5F1CCA76D781B6115 /* Pods-Foodprint.debug.xcconfig */,
+				D786D305E37CF9F366DF8AFC /* Pods-Foodprint.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		1A6A2505C2272DFBD7E96889 /* Frameworks */ = {
+		2A31AFCAD1DA4CF48F165FD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C23BC1B0CA19F2D43C034B6C /* Pods_Foodprint.framework */,
+				773687995A9FB4B17E1258AB /* Pods_Foodprint.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,7 +91,7 @@
 				7BF06719218793D30072076D /* Foodprint */,
 				7BF06718218793D30072076D /* Products */,
 				0B340FF2F83D082AE92FB050 /* Pods */,
-				1A6A2505C2272DFBD7E96889 /* Frameworks */,
+				2A31AFCAD1DA4CF48F165FD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,11 +177,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7BF0672C218793D50072076D /* Build configuration list for PBXNativeTarget "Foodprint" */;
 			buildPhases = (
-				D122883C001F994C71B8B529 /* [CP] Check Pods Manifest.lock */,
+				EEC86442977C09EC0E15A1C0 /* [CP] Check Pods Manifest.lock */,
 				7BF06713218793D30072076D /* Sources */,
 				7BF06714218793D30072076D /* Frameworks */,
 				7BF06715218793D30072076D /* Resources */,
-				1476E95519A69E55B04D0349 /* [CP] Embed Pods Frameworks */,
+				20670A901ED99BB2D744F77F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,7 +239,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1476E95519A69E55B04D0349 /* [CP] Embed Pods Frameworks */ = {
+		20670A901ED99BB2D744F77F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,20 +248,20 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Foodprint/Pods-Foodprint-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftChart/SwiftChart.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftChart.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Foodprint/Pods-Foodprint-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D122883C001F994C71B8B529 /* [CP] Check Pods Manifest.lock */ = {
+		EEC86442977C09EC0E15A1C0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,7 +449,7 @@
 		};
 		7BF0672D218793D50072076D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA4792FA317435DDD67C63CB /* Pods-Foodprint.debug.xcconfig */;
+			baseConfigurationReference = C93283E5F1CCA76D781B6115 /* Pods-Foodprint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -467,7 +467,7 @@
 		};
 		7BF0672E218793D50072076D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E506C68BAAF0A5694BB5032D /* Pods-Foodprint.release.xcconfig */;
+			baseConfigurationReference = D786D305E37CF9F366DF8AFC /* Pods-Foodprint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
