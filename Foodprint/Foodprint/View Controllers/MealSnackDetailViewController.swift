@@ -8,15 +8,13 @@
 
 import UIKit
 
-class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, FoodResultCellDelegate {
+class MealSnackDetailViewController: UIViewController, FoodResultCellDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         guard let foodsAddedTVC = children.first as? FoodsAddedTableViewController else { return }
         self.foodsAddedTVC = foodsAddedTVC
-        foodSearchBar.delegate = self
-        foodResultsTableView.isHidden = true
         updateViews()
     }
     
@@ -32,12 +30,12 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
     private func updateViews() {
         guard let foodEntry = foodEntry else {
             title = "Add new meal"
-            dateLabel.text = Date().formatted()
+            //dateLabel.text = Date().formatted()
             return
         }
         
         title = "View your meal"
-        dateLabel.text = foodEntry.date?.formatted()
+        //dateLabel.text = foodEntry.date?.formatted()
         let array = foodEntry.foods?.allObjects as! [Food]
         foodEntryController.foodsAddedFromResults = array
         
@@ -100,39 +98,6 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
         foodsAddedTVC?.tableView.reloadData()
     }
     
-    // MARK: - UISearchBarDelegate
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchTerm = foodSearchBar.text else { return }
-        
-        foodResultsTableView.isHidden = false
-        
-        foodEntryController.performSearch(for: searchTerm) { (_) in
-            DispatchQueue.main.async {
-                self.foodResultsTableView.reloadData()
-            }
-        }
-    }
-    
-    // MARK: - Table view data source
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foodEntryController.foodSearchResults.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FoodResultCell", for: indexPath) as? FoodResultTableViewCell else { return UITableViewCell()}
-        
-        cell.foodResult = foodEntryController.foodSearchResults[indexPath.row]
-        cell.delegate = self
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
-    
     // MARK: - Private Methods
     
     private func compare(oldArray: [Food], to newArray: [Food]) -> [Food] {
@@ -156,8 +121,6 @@ class MealSnackDetailViewController: UIViewController, UITableViewDelegate, UITa
     let foodEntryController = FoodEntryController.shared
     var foodsAddedTVC: FoodsAddedTableViewController?
     
-    @IBOutlet weak var dateLabel: UILabel!
+
     @IBOutlet weak var mealTypesSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var foodSearchBar: UISearchBar!
-    @IBOutlet weak var foodResultsTableView: UITableView!
 }
