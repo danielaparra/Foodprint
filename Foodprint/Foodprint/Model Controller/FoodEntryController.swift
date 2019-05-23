@@ -19,11 +19,16 @@ class FoodEntryController {
         let startOfDay = calendar.startOfDay(for: Date())
         let today = calendar.component(.weekday, from: Date())
         print(today)
-        guard let yesterday = calendar.date(byAdding: .day, value: -3, to: startOfDay),
-            let startOfWeekPlus1 = calendar.date(byAdding: .day, value: -4, to: startOfDay) else { return }
+        guard let yesterday = calendar.date(byAdding: .day, value: -5, to: startOfDay),
+            let startOfWeekPlus1 = calendar.date(byAdding: .day, value: -6, to: startOfDay) else { return }
         
 //        FoodEntry(mealType: .breakfast, foods: [Food(foodRep: FoodRep(), serving: 2)], date: yesterday, context: CoreDataStack.shared.mainContext)
-//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 1)], date: startOfWeek, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 1)], date: startOfDay, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 3)], date: yesterday, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .dinner, foods: [Food(foodRep: FoodRep(), serving: 2)], date: yesterday, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 5)], date: startOfWeekPlus1, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .breakfast, foods: [Food(foodRep: FoodRep(), serving: 2)], date: yesterday, context: CoreDataStack.shared.mainContext)
+//        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 1)], date: yesterday, context: CoreDataStack.shared.mainContext)
 //        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 3)], date: yesterday, context: CoreDataStack.shared.mainContext)
 //        FoodEntry(mealType: .dinner, foods: [Food(foodRep: FoodRep(), serving: 2)], date: yesterday, context: CoreDataStack.shared.mainContext)
 //        FoodEntry(mealType: .lunch, foods: [Food(foodRep: FoodRep(), serving: 5)], date: startOfWeekPlus1, context: CoreDataStack.shared.mainContext)
